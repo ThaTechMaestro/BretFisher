@@ -1,0 +1,28 @@
+What is Serverless?
+    You do not need to manage Servers 
+    It saves you the stress of setting up a server, routing requests,
+        defining rest resources and then creating methods to perform actions
+        on those resources (GET, POST)
+    
+    It helps you focus on developing the application logic,
+        and saves you time in manually creating the underlying infra
+        and other methods or components
+    
+    Example: AWS Lambda
+
+
+How does containers promote or aid serverless architecture?
+    How AWS Lambda works under the hood will help clarify the question above
+        (Check it out on a weekend)
+            Link: https://www.quora.com/What-is-serverless-architecture
+
+Docker:
+    It is just a different way of running and packing an appliaction and
+    also moving it around your infrastructure
+
+
+-> If you have done things manually, you would easily see the importance
+    of the tools or frameworks which aids in automating those activities
+    easily.
+
+

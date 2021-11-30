@@ -1,0 +1,73 @@
+What is Nginx?
+    It is a multifunctional webserver.
+    It can act as an email proxy, reverse proxy and load balancer.
+
+Docker Architecture
+    In simple form:
+        It uses a client-server architecture (CLI-Server)
+
+What is a daemon?
+    It is a service that runs in the background and supervises
+    the system or provides functionality to other processes
+
+-----> Build a CLI project
+
+ 
+Differences between Containerd and Docker Engine?
+    Beautiful explanation here:
+        https://www.tutorialworks.com/difference-docker-containerd-runc-crio-oci/
+
+    Docker Engine is an interface exposed to user to aid the creation and running of containers
+
+    Containerd is a container runtime at a high level (responsible for creating and deleting containers)
+            It pushes and pulls images, manages storage and networking and supervises the running of containers
+
+    runc - It is responsible for creating and running containers (Low level, performs the actual creation)
+
+
+What is backward compatibility?
+    Actions or commands from the old model work well with the new model
+
+----->>>>>>>>>>>>>>>>>
+Docker structure
+    dockerfile -> Image -> Container
+
+    Images can not be edited but it can be shared as it is needed to create a container
+    Images are more like what classes are to object, they are the blue print 
+        containing important information needed to spin up an application/service within a container 
+    
+    Images are stored in a place called registry popularly called Docker Hub
+
+    Docker daemon is called dockerd 
+    Docker cli is called docker 
+    Both the demon and cli are referred to as the docker engine
+
+    Not going deep yet, developing and high level overview
+
+
+
+
+
+ COMMANDS:
+    Check version
+        docker version
+    
+    Check info
+        docker info
+
+    Port Exposure in Docker
+        -p HOST_PORT=CONTAINER_PORT
+
+    To run a container in the background 
+        use of --detach
+            docker container run --publish 80:80 --detach nginx
+    
+
+    To add a name to a container 
+        use of --name
+            docker container run --publish 80:80 --detach --name webhost nginx
+
+
+    Display logs generated in a container if run in detach mode 
+        docker container logs name_of_container
+

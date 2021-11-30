@@ -1,0 +1,17 @@
+Taking on Assignment as Project:
+    Managing multiple containers:
+        Run a nginx, mysql and httpd server
+        Run all of them in detach mode "--detach" with an associated name --name  
+            nginx should listen on -> 81:80
+            httpd should listen on -> 8080:80
+            mysql should listen on -> 3306:3306
+        When running mysql use the --env option to pass in:
+            MYSQL_RANDOM_ROOT_PASSWORD=yes
+        Use docker container logs on mysql container to find the random password created on startup
+
+        Cleaning all containers after succesful creation:
+            docker container stop
+            docker container rm 
+                (Both can accept multiple names or IDs)
+        
+        Confirm with docker container ls commands to be sure everything is in order and the applications where cleaned
