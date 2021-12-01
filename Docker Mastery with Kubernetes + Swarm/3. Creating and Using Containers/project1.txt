@@ -1,12 +1,15 @@
 Taking on Assignment as Project:
     Managing multiple containers:
         Run a nginx, mysql and httpd server
+
         Run all of them in detach mode "--detach" with an associated name --name  
             nginx should listen on -> 81:80
             httpd should listen on -> 8080:80
             mysql should listen on -> 3306:3306
+
         When running mysql use the --env option to pass in:
             MYSQL_RANDOM_ROOT_PASSWORD=yes
+
         Use docker container logs on mysql container to find the random password created on startup
 
         Cleaning all containers after succesful creation:
@@ -15,3 +18,26 @@ Taking on Assignment as Project:
                 (Both can accept multiple names or IDs)
         
         Confirm with docker container ls commands to be sure everything is in order and the applications where cleaned
+
+
+Solution:
+    You can use a single docker command to run multiple containers
+    Nginx:
+        docker run --name mynginx1 -p 80:80 -d nginx
+        ---> It can also be rewritten as:
+                docker run --name mynginx1 -d -p 81:80 nginx
+    Httpd:
+        docker run --name mynginx1 -p 81:80 -d nginx
+
+    Mysql:
+        docker run --name mysql1 -e MYSQL_RANDOM_ROOT_PASSWORD=yes -p 3000:3306 -d mysql
+
+        wait for 5-7mins:
+            Then run
+                docker container logs mysql1
+                    The generated password will be displayed in the logs
+    
+
+    Cleaning:
+        docker stop container_ID
+        docker rm container_ID

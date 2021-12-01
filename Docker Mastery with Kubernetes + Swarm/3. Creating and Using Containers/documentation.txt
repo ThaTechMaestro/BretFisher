@@ -69,5 +69,8 @@ Docker structure
 
 
     Display logs generated in a container if run in detach mode 
-        docker container logs name_of_container
+        docker container logs name_of_container/container_id
+    
+    Remove a container 
+        docker container rm -f container_id
 
