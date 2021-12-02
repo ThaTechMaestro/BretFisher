@@ -28,7 +28,10 @@ Differences between Containerd and Docker Engine?
 What is backward compatibility?
     Actions or commands from the old model work well with the new model
 
------>>>>>>>>>>>>>>>>>
+
+--------------------------------->>>>>>>>>>>>>>>>>
+
+
 Docker structure
     dockerfile -> Image -> Container
 
@@ -44,8 +47,8 @@ Docker structure
 
     Not going deep yet, developing and high level overview
 
+------------------------------>>>>>>>>>>>>>>>
 
----------->>>>>>>>>>>>>>>
 Understanding what is going on in a docker container from the outside
 
  COMMANDS:
@@ -58,7 +61,8 @@ Understanding what is going on in a docker container from the outside
     Performance stats of container
         docker container stats name_of_container
 
----------->>>>>>>>>>>>>>>
+------------------------------->>>>>>>>>>>>>>>
+
 Directly interacting with a container (accessing a shell within a container)
     How to get into a container and perform actions inside it
 
@@ -70,9 +74,27 @@ What is a package manager?
     configuring and removing computer programs for a computer in a consistent manner.
     They are more like the cleaners for computer programs in an operating System
 
+COMMANDS:
+    Start a new container interactively
+        docker container run -it
+    
+    Run additional commands within a container
+        docker container exec -it
 
+    Run additional applications within a running container as the main process
+    Using the run command the addditonal appliation becomes the main process in the running container 
+    Once we exit or kill the additional application, the container exits or stops
+        docker container run -it --name proxy nginx bash
+    
+    Run additional application/process within a running container without it being the main process 
+    Using the exec command the additional application becomes an extra process in line with the main 
+    process running within the container 
+    Once we exit  or kill this additional application, the container still run, as it keeps the main 
+    process running.
+        docker container exec -it mysql bash
 
---------------------->>>>>>>>>>>>
+------------------------------------------->>>>>>>>>>>>
+
 Docker Network Concepts
     OSI - Open Systems Interconnection model
 
@@ -132,32 +154,27 @@ Docker Network Concepts
         This links explains it best:
             https://networkingforbeginners.weebly.com/blog/communication-between-devices-on-same-network
 
- 
 
+    Docker form of network interface is called:
+        Docker network drivers:
+            They are more like an abstraction that helps implements key networking functions 
+        
+    Networking Basics(Subnet, router, gateway):
+        Link: https://www.youtube.com/watch?v=_IOZ8_cPgu8
+        Gateway: Ip Address of a router 
+        Firewall: Set of rules to preven unauthorized access and ensure security
 
  COMMANDS:
-    Start a new container interactively
-        docker container run -it
+    List the networks 
+        docker network ls 
+
+    Inspect the network
+        docker network inspect
     
-    Run additional commands within a container
-        docker container exec -it
+    create a network with additional driver option 
+        docker network create --driver
 
-    Run additional applications within a running container as the main process
-    Using the run command the addditonal appliation becomes the main process in the running container 
-    Once we exit or kill the additional application, the container exits or stops
-        docker container run -it --name proxy nginx bash
-    
-    Run additional application/process within a running container without it being the main process 
-    Using the exec command the additional application becomes an extra process in line with the main 
-    process running within the container 
-    Once we exit  or kill this additional application, the container still run, as it keeps the main 
-    process running.
-        docker container exec -it mysql bash
-
-
-Continue from folder 3, video 10
-
----------->>>>>>>>>>>>>>>
+------------------------------------------>>>>>>>>>>>>>>>
 
 
  COMMANDS:
