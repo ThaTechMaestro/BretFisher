@@ -45,7 +45,119 @@ Docker structure
     Not going deep yet, developing and high level overview
 
 
+---------->>>>>>>>>>>>>>>
+Understanding what is going on in a docker container from the outside
 
+ COMMANDS:
+    displays list of processes in the running container:
+        docker container top name_of_container 
+            
+    display detailed details of container in json format (does not tell us much about what the container is doing, more of config details)
+        docker container inspect name_of_container
+
+    Performance stats of container
+        docker container stats name_of_container
+
+---------->>>>>>>>>>>>>>>
+Directly interacting with a container (accessing a shell within a container)
+    How to get into a container and perform actions inside it
+
+
+Container only runs as the command we run on startup runs.
+
+What is a package manager?
+    It is a collection of Software tools that automates the process of installing, upgrading,
+    configuring and removing computer programs for a computer in a consistent manner.
+    They are more like the cleaners for computer programs in an operating System
+
+
+
+--------------------->>>>>>>>>>>>
+Docker Network Concepts
+    OSI - Open Systems Interconnection model
+
+    Every layer in the OSI Model produces an output for the next layer:
+        This output is called PDU:
+            PDU - Protocol Data Unit 
+            Protocol: Defining the rules to be followed for effective communication 
+                        or smooth operation.
+            
+    The OSI Layer:
+        Layer 7,6 & 5 makes up the application layer 
+        7. Application 
+            The pdu for this layer is messages
+            The protocols for this layer includes:
+                HTTP, FTP, SMTP and DHCP 
+
+        6. Presentation
+        5. Session
+            The pdu for this layer is messages/data (in bits)
+        
+        4. Transport
+                This protocols in this layer provides host to host communication services for applications 
+
+                The pdu for this layer is the segment
+                The protocols at the transport layer are:
+                    TCP:
+                        It is connection oriented, connection must be established before transfer of data.
+                        Also reliability of data transfered is prioritised
+                        It focuses more on reliability
+
+                    UDP (User Datagram Protocol)
+                        It is connectionless, a connection is not required for transfer of data
+                        It prioritises speed more, that is the time at which data arrives is of higher importance than the data itself 
+                            Usecases involved:
+                                Streaming media (audio, video)
+                                Simple query/response applications (DNS Lookups)
+
+                    Addition of ports to the pdu (Client and service ports)
+
+
+
+        3. Network/Internet Layer
+                 The pdu for this layer is the packet, it deals with adding ip addresses 
+                    It addients the ip adderss of the client and service together
+                    It transfer data to a particular address in a network
+
+
+        2. Data Link
+                The pdu for this layer is the frame
+
+        1. Physical Layer
+            The pdu for this layer is the bits or symbol
+    
+    
+    How computers or containers on the same network easily communicates with each other?
+        I think there will be an IP address lookup table.
+        This links explains it best:
+            https://networkingforbeginners.weebly.com/blog/communication-between-devices-on-same-network
+
+ 
+
+
+ COMMANDS:
+    Start a new container interactively
+        docker container run -it
+    
+    Run additional commands within a container
+        docker container exec -it
+
+    Run additional applications within a running container as the main process
+    Using the run command the addditonal appliation becomes the main process in the running container 
+    Once we exit or kill the additional application, the container exits or stops
+        docker container run -it --name proxy nginx bash
+    
+    Run additional application/process within a running container without it being the main process 
+    Using the exec command the additional application becomes an extra process in line with the main 
+    process running within the container 
+    Once we exit  or kill this additional application, the container still run, as it keeps the main 
+    process running.
+        docker container exec -it mysql bash
+
+
+Continue from folder 3, video 10
+
+---------->>>>>>>>>>>>>>>
 
 
  COMMANDS:

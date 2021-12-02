@@ -1,0 +1,4 @@
+Understanding TCP/IP:
+    Link: https://www.youtube.com/watch?v=3b_TAYtzuho
+
+    Nicholas Andre method of explanation works for me
