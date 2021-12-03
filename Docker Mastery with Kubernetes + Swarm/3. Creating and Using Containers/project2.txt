@@ -1,0 +1,81 @@
+Scenario:
+    You are a support engineer for a server farm that runs both Ubuntu
+    and CentOS
+    
+    Work Ticket:
+        Check the different curl versions on the two diferent OS
+
+    Significance:
+        In the pre-container, you would have to set up a virtual environment
+        and wait for the components to install completely
+
+        But currently, this can be done much faster and easier with the help 
+        of containers
+
+    Goal:
+        Actions:
+
+            run curl version in two different containers running two different OS
+            Use these two OS in your containers 
+                Image: ubuntu:14.04 
+                        centos:7
+        
+            Check out the "docker container --rm" option so you can save cleanup
+
+            Ensure curl is installed and on latest version for that distro
+                Ubuntu: apt-get update && apt-get install curl
+                Centos: yum update curl
+        
+        Check your curl version
+
+
+    
+    SOLUTIONS AND ISSUES:
+
+        When trying to run an ubuntu container, why does it exit immediately, even when 
+        bash was the main process?
+            The main command for this container is bash, which does not have an interface 
+                for interacting directly with users, hence it exits immediately after being executed.
+            To make the container stay and interactive, we add the "-it" as an extra argument
+        
+        Commands:
+            UBUNTU
+            Run ubuntu container interactively 
+                docker container run --name ubuntu1 -it ubuntu:14.04
+            Update package and install curl
+                apt-get update && apt-get install curl
+            Check Curl Version installed
+                curl -V
+                    output -> curl 7.35.0
+            
+            CENTOS
+            Run centos container interactively 
+                docker container run --name centos1 -it centos:7
+             Update package and install curl
+                yum update curl
+            Check Curl Version installed
+                curl -V
+                    output -> curl 7.29.0 
+
+            --rm option 
+                It automatically removes the container when it exits
+                Automatic clean up of container
+                
+
+    Learnings:
+        Terminal, Shell and command line:
+            Command Line and terminal means the same thing
+            Shell is the first interpreter, it converts human readable commands into actionable codes 
+                the computer understands and implement.
+            Shells do not have interfaces for interacting with users.
+                User can only communicate with shells using Terminals/command line
+
+            Link: https://www.earthdatascience.org/courses/intro-to-earth-data-science/open-reproducible-science/bash/
+        
+        Behind the scenes of docker networking:
+            https://argus-sec.com/docker-networking-behind-the-scenes/
+
+
+        COMMANDS:
+        Run an ubuntu 14.04 container interactively
+            docker container run --name centos1 -it centos:7

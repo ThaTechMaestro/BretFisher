@@ -163,6 +163,19 @@ Docker Network Concepts
         Link: https://www.youtube.com/watch?v=_IOZ8_cPgu8
         Gateway: Ip Address of a router 
         Firewall: Set of rules to preven unauthorized access and ensure security
+    
+    Difference between DNS and NAT?
+        Network Address Translation:
+            It is the process of mapping network addresses such that a private ip address 
+                is being mapped to a public ip address via a router
+                Link: https://avinetworks.com/glossary/network-address-translation 
+            
+            DNS is mapping human readable names to ip addresses, this allows easy communication amongst humans,
+                as it is difficult for humans to keep track of ip addresses. 
+        
+        What is an Anti-pattern?
+            Solutions to common recurring problem but are usually bad and counter-productive
+        
 
  COMMANDS:
     List the networks 
@@ -203,3 +216,7 @@ Docker Network Concepts
     Remove a container 
         docker container rm -f container_id
 
+
+
+Stopped at:
+        Folder 3: Video 14
