@@ -1,0 +1,132 @@
+Scenario:
+    DNS Round Robin Testing
+
+    Significance:
+        In the pre-container, you would have to set up a virtual environment
+        and wait for the components to install completely
+
+        But currently, this can be done much faster and easier with the help 
+        of containers
+
+    Goal:
+        Actions:
+
+            run curl version in two different containers running two different OS
+            Use these two OS in your containers 
+                Image: ubuntu:14.04 
+                        centos:7
+        
+            Check out the "docker container --rm" option so you can save cleanup
+
+            Ensure curl is installed and on latest version for that distro
+                Ubuntu: apt-get update && apt-get install curl
+                Centos: yum update curl
+        
+        Check your curl version
+
+
+    
+    SOLUTIONS AND ISSUES:
+
+
+        
+        Commands:
+            
+                
+
+    Learnings:
+        What is DNS round robin?
+            Round robin simply means in a circular fashion, after one we move to the next thing, while 
+                maintaining a queue.
+            Round robin scheduling in OS means a time quanta is assigned to a process, and after that time 
+                process is up the cpu moves to the next process on the process queue.
+            DNS round robbin is a simple way of balancing requests across web servers 
+                Considering two servers Server A and Server B
+                    DNS roundrobbin
+                        The first request is sent to Server A 
+                        The second request is sent to Server B
+                        The third request is sent to Server A 
+                        The fourth request is sent to Server B
+                            A B A B, this is done continously in a queue fashion. 
+                                The lastly accesed server is sent to the bottom of the queue.
+                        
+                        Most Basic implementation of Load Balalncing
+                        Features:
+                            It improves Speed (Faster response time)
+                            It increases availability
+            
+        
+        What is a CNAME?
+            The concept that you can have two different hosts with DNS aliases that 
+                corresponds to the same DNS name
+
+        How a computer loads a website?
+          Type in the web address in the browser, 
+            Web browsers forward the query to the Computer OS
+            The OS forwards it to the DNS resolver
+                The DNS resolver checks its cache whether it has the ip address of the requested website
+                    if not, it forwards it to the Rootname Server 
+                     ROOTNAME SERVER:
+                        It checks the extension of the web address such as if it is .com, .net, .org 
+                        It finds it is .com, based on the extension the root name server provides the IP address
+                            of the equivalent Top Level Domain Server(TLD name Server) needed to the DNS resolver 
+                        The DNS resolver then sends a request to .com TLD Name Server seeking for the ip of the .com web address 
+                            The TLD Name Server provides the ip address of the authoritative name server, which stores the 
+                                ip address of the requested website.
+                        Finally the authoritative name server provides the exact IP address requested by the DNS resolver
+                        THe DNS resolver(usually our Internet Service provider), takes the IP address and stores it in his cache 
+                            for future use.
+                            It forwards this ip address to the OS, the OS, forwards it to the web browser 
+                            The web browser sends request to the Ip address and recieves a response from the server.
+        
+        Types of records in a DNS
+            A records maps servers ip address to a domain name
+
+        
+        Cache:
+            Temporary storage address to improve speed of response to request
+
+        Domanin Name System:
+            These are interpreted in form of a hierarchy
+            www.facebook.com is interpreted as shown below by classifying them into servers
+                .com
+                .facebook
+            
+        Slashdot effect:
+            A situation when a smaller website experiences a massive increase in traffic from being mentioned 
+                on a popular website.
+                It has the same effect as a denial of service attack.
+        
+        CPU Cycle:
+            A cycle is simple measurement for the cpu execution of a simple command 
+                At one cycle, the cpu executes an instruction
+                Relating it with what human understand, out time frame (1s)
+                1cycle/second means for every second in the human time, the cpu executes one instruction.
+                    This instruction can be fetch, decode, execute.
+
+                    This is what is known as clock speed.
+                    A clockspeed of 2 gigahertz means the cpu can complete 2billion cycles in one second.
+                        or complete 2 billion cpu unit instruction in one cycle.
+                    
+            Single electronic pulse of a cpu 
+            1hertz - 1cycle/second
+
+
+        Thread:
+            Smallest sequence of programmed instruction
+            A process can be made of multiple threads
+            It is a unit of scheduling and execution
+        
+        Process:
+            It is a unit of resources
+    
+
+    Terms:
+        Speed 
+        Availability 
+        Reliability
+
+    
+
+    Stopped at: Video 19:
+                        1:30
