@@ -1,28 +1,24 @@
 Scenario:
+
+
     DNS Round Robin Testing
 
     Significance:
-        In the pre-container, you would have to set up a virtual environment
-        and wait for the components to install completely
+        Having multiple containers on a created network respond to the same DNS address
+        How to have mutiple servers support a particular domain using docker
 
-        But currently, this can be done much faster and easier with the help 
-        of containers
 
     Goal:
         Actions:
-
-            run curl version in two different containers running two different OS
-            Use these two OS in your containers 
-                Image: ubuntu:14.04 
-                        centos:7
+            Create a new virtual network (default bridge driver)
+            create two container using elasticsearch:2 image 
+            Research on the use of --network-alias search, when creating them to give an 
+                additional DNS name to respond to 
+                 
+            
         
-            Check out the "docker container --rm" option so you can save cleanup
+             
 
-            Ensure curl is installed and on latest version for that distro
-                Ubuntu: apt-get update && apt-get install curl
-                Centos: yum update curl
-        
-        Check your curl version
 
 
     
@@ -31,10 +27,12 @@ Scenario:
 
         
         Commands:
+            Best Article explaining this:
+                https://vegibit.com/dns-round-robin-in-docker/
             
                 
 
-    Learnings:
+    LEARNINGS:
         What is DNS round robin?
             Round robin simply means in a circular fashion, after one we move to the next thing, while 
                 maintaining a queue.
@@ -78,6 +76,8 @@ Scenario:
                             for future use.
                             It forwards this ip address to the OS, the OS, forwards it to the web browser 
                             The web browser sends request to the Ip address and recieves a response from the server.
+
+                            
         
         Types of records in a DNS
             A records maps servers ip address to a domain name
@@ -119,14 +119,24 @@ Scenario:
         
         Process:
             It is a unit of resources
-    
+
+        Network Alias:
+            Containers are usually recognised by ip address on a network, but this is not efficient
+                Since ip address of containers can change after being stopped or restarted on a network
+            Hence to solve this, network aliases are used, which is a human readable name for a container on a particular network
+                making it easy to interact with a container efficiently 
+
+
+        On Completing the Project:
+            Docker can have multiple containers on a given network respond to the same DNS address.
+            This works on newly created custom virtual networks in Docker.
+            To configure DNS Round Robin In Docker, you can use the –network-alias option.
+            Use the nslookup or curl command in a container to see what containers use a DNS Name    
 
     Terms:
         Speed 
         Availability 
         Reliability
+        Maintainability
 
     
-
-    Stopped at: Video 19:
-                        1:30
